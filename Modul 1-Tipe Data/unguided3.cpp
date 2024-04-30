@@ -17,3 +17,6 @@ int main() {
 
     return 0;
 }
+
+Fungsi array_map() mengirimkan setiap nilai array ke fungsi buatan pengguna, dan mengembalikan array dengan nilai baru, yang diberikan oleh fungsi buatan pengguna.
+Seperti pada program tersebut, kita dapat bebas memasukkan array apa saja ke fungsi dengan mempertimbangkan tipe data tersebut. 
