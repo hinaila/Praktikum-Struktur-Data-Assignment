@@ -21,3 +21,6 @@ int main() {
 
     return 0;
 }
+
+Struct merupakan perintah yang dapat digunakan untuk membuat struktur dari suatu record.
+Pada program diatas, sebuah record yang merepresentasikan tentang mahasiswa memiliki atribut berupa nama yang bertipe string, usia yang bertipe integer.
