@@ -21,3 +21,5 @@ int main() {
 
     return 0;
 }
+
+Tipe data primitif seperti int digunakan untuk menyimpan nilai bilangan bulat. Penggunaan tipe data primitif dalam program C++ memungkinkan kita untuk melakukan operasi matematika dan pemrosesan data dasar dengan mudah.  Dalam program di atas, kita menggunakan tipe data primitif int untuk merepresentasikan operasi penjumlahan dan perkalian. Dengan menggunakan tipe data primitif yang sesuai, kita dapat mengoptimalkan penggunaan memori dan meningkatkan performa program.
