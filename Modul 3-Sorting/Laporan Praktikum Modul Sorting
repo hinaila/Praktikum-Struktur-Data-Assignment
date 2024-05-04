@@ -1,6 +1,6 @@
 # <h1 align="center">Laporan Praktikum Modul Sorting</h1>
-<p align="center">Grahen Maryam Rompas Basiran</p>
-<p align="center">2311110062</p>
+<p align="center">Hafshoh Imroatun Naila</p>
+<p align="center">2311110056</p>
 
 ## Dasar Teori
 Algoritma adalah kumpulan langkah sistematis untuk memperoleh hasil yang diinginkan. Sebelum sebuah algoritma dijalankan, biasanya ada suatu kondisi awal (initial state) yang harus dipenuhi. Kemudian, langkah-langkah ini diproses hingga mencapai suatu kondisi akhir. Sorting didefinisikan sebagai pengurutan sejumlah data berdasarkan nilai kunci tertentu. Pengurutan dapat dilakukan dari nilai terkecil ke nilai terbesar (ascending) atau sebaliknya [1]. Dalam pertemuan kali ini, kita akan membahas tiga algoritma sorting, yaitu buble sort, selection sort, dan insertion sort.
