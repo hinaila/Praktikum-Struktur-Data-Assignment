@@ -3,39 +3,24 @@
 <p align="center">2311110056</p>
 
 ## Dasar Teori
-Algoritma adalah kumpulan langkah sistematis untuk memperoleh hasil yang diinginkan. Sebelum sebuah algoritma dijalankan, biasanya ada suatu kondisi awal (initial state) yang harus dipenuhi. Kemudian, langkah-langkah ini diproses hingga mencapai suatu kondisi akhir. Sorting didefinisikan sebagai pengurutan sejumlah data berdasarkan nilai kunci tertentu. Pengurutan dapat dilakukan dari nilai terkecil ke nilai terbesar (ascending) atau sebaliknya [1]. Dalam pertemuan kali ini, kita akan membahas tiga algoritma sorting, yaitu buble sort, selection sort, dan insertion sort.
+Algoritma adalah kumpulan langkah sistematis untuk memperoleh hasil yang diinginkan. Sebelum sebuah algoritma dijalankan, biasanya ada suatu kondisi awal (initial state) yang harus dipenuhi. Kemudian, langkah-langkah ini diproses hingga mencapai suatu kondisi akhir[1].
+Algoritma Sorting adalah algoritma untuk meletakkan kumpulan elemen data ke dalam urutan tertentu. Sorting didefinisikan sebagai pengurutan sejumlah data berdasarkan nilai kunci tertentu. Berdasarkan data terurutnya, algoritma sorting dibagi menjadi dua jenis, yaitu:
+
+o  Ascending; pengurutan dari terkecil hingga terbesar. Contoh: a, b, c, d, e.
+o  Descending; pengurutan dari nilai terbesar hingga terkecil. Contoh: e, d, c, b, a 
+
+Dalam pertemuan kali ini, kita akan membahas tiga algoritma sorting, yaitu buble sort, selection sort, dan insertion sort.
 
 ### 1. BUBLE SORTING
-Algoritma Bubble  Sort adalah  salah  satu  dari  beberapa  jenis  sorting  yang digunakan untuk  mengurutkan  data. Cara  kerja  algoritma  ini  adalah  mengulang  proses, melakukan  perbandingan antara setiap elemen array dan melakukan penggantian posisi jika urutannya sudah benar. Perbandingan setiap elemen dari array ini berlanjut berjalan sampai kondisi yang ditentukan terpenuhi [2].
+Bubble  Sort adalah  jenis  sorting  yang digunakan untuk  mengurutkan  data dengan cara mengulang  proses, melakukan  perbandingan antara setiap elemen array dan melakukan penggantian posisi jika urutannya sudah benar. Perbandingan setiap elemen dari array ini berlanjut berjalan sampai kondisi yang ditentukan terpenuhi [2].
 
-Contoh prosedur buble sort dalam bahasa C++
-```C++
-#include<iostream>
-using namespace std;
 
-void buble_sort(int arr[], int length){
-    bool not_sorted = true;
-    int j=0, tmp;
-
-    while (not_sorted){
-        not_sorted = false;
-        j++;
-        for (int i=0; i < length - j; i++>){
-            if (arr[i] > arr[i+1]){
-                tmp = arr[i];
-                arr[i] = arr[i+1];
-                arr[i+1] = tmp;
-                not_sorted = true;
-            }// end of if
-        }// end of for loop
-    }// end of while loop
-}// end of bubble_sort
-```
 
 ### 2. SELECTION SORTING
 Algoritma selection sort adalah salah satu algoritma pengurutan sederhana yang beroperasi dengan cara memilih elemen terkecil dari daftar dan menukarnya dengan elemen pertama. Kemudian, ia akan  memilih  elemen  terkecil  dari  sisa  daftar  dan  menukarnya  dengan  elemen  kedua,  dan seterusnya, hingga seluruh daftar terurut [2].
 
 Contoh prosedur selection sort dalam bahasa C++
+
 ```C++
 #include<iostream>
 using namespace std;
@@ -60,26 +45,6 @@ void SelectSort(arr[], int n){
 ### 3. INSERTION SORTING
 Algoritma insertion sort disebut-sebut sebagai metode pertengahan. Artinya, metode ini memiliki kecepatan rata-rata antara metode primitif (bubble dan selection) dan modern (merge dan quick). Metode ini, didasarkan pada sebuah kunci yang diambil pada elemen ke-2  pada sebuah larik, lalu menyisipkan elemen tersebut jika kondisi percabangan terpenuhi. Metode penyisipan (insertion) bertujuan untuk menjadikan bagian sisi kiri larik terurutkan sampai dengan seluruh larik berhasil diurutkan [2]
 
-Contoh prosedur insertion sort dalam bahasa C++
-```C++
-#include<iostream>
-using namespace std;
-
-void insertion_sort(int arr[], int length){
-    int i,j,tmp;
-
-    for (int i = 1; i < length; i++){
-        j = i;
-
-        while  (j > 0 && arr[j - 1] > arr[j]){
-            tmp = arr[j];
-            arr[j] = arr[j-1];
-            arr[j-1] = tmp;
-            j--;
-        }// end of while loop
-    }// end of for loop
-}
-```
 
 ## Guided
 
@@ -89,40 +54,28 @@ void insertion_sort(int arr[], int length){
 #include <iostream>
 using namespace std;
 
-void bubble_sort(double arr[], int length){
-    bool not_sorted = true;
-    int j=0;
-    double tmp;
-    while (not_sorted){
-        not_sorted = false;
-        j++;
-        for (int i = 0; i < length - j; i++){
-            if (arr[i] > arr[i + 1]) {
-                tmp = arr[i];
-                arr[i] = arr[i + 1];
-                arr[i + 1] = tmp;
-                not_sorted = true;
-                }//end of if
-            }//end of for loop
-        }//end of while loop
-    }//end of bubble_sort
-    void print_array(double a[], int length) {
-        for(int i=0; i<length; i++) {
-            cout << a[i] << "\t";
-        }
-        cout << endl;
+int main(){
+ int n = 10;
+ int data[n] = {9, 4, 1, 7, 5, 12, 4, 13, 4, 10};
+ int cari = 10;
+ bool ketemu = false;
+ int i;
+ // algoritma Sequential Search
+ for (i = 0; i < n; i++){
+    if(data[i] == cari){
+        ketemu = true;
+        break;
     }
-    int main() {
-        int length = 6;
-        double a[] = {22.1, 15.3, 8.2, 33.21, 99.99,99.99};
-        cout << "Urutan bilangan sebelum sorting: " << endl;
-        print_array(a, length);
-        bubble_sort(a, length);
-        cout << "\nUrutan bilangan setelah sorting: " << endl;
-        print_array(a, length);
-
-        return 0;
-    }
+ }
+    cout << "\t Program Sequential Search Sederhana\n" << endl;
+    cout << " data: {9, 4, 1, 7, 5, 12, 4, 13, 4, 10}"<< endl;
+ if (ketemu){
+    cout << "\n angka "<< cari << " ditemukan pada indeks ke-" << i << endl;
+ } else {
+    cout << cari << " tidak dapat ditemukan pada data." << endl;
+ }
+ return 0;
+}
 ```
 ### Penjelasan
 Program di atas merupakan program untuk mengurutkan data numerik bertipe double dari kecil ke besar (ascending) menggunakan algoritma buble sorting.
