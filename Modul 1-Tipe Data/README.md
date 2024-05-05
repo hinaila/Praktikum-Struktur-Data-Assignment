@@ -1,4 +1,3 @@
-# Praktikum-Struktur-Data-Assignment
 # <h1 align="center">Laporan Praktikum Modul Tipe Data</h1>
 <p align="center">Hafshoh Imroatun Naila</p>
 <p align="center">2311110056</p>
@@ -6,21 +5,23 @@
 
 ## Dasar Teori
 
-Tipe data adalah sebuah pengelompokan atau pengklasifikasian data berdasarkan jenis data tersebut. Tipe data yang akan dipelajari, yaitu:
+Tipe data adalah adalah sebuah pengklasifikasian data berdasarkan jenis data
+tersebut. Tipe data dibutuhkan agar kompiler dapat mengetahui bagaimana sebuah
+data akan digunakan. Terdapat 3 tipe data yang akan dipelajari, yaitu:
 1) Tipe data primitif
    Adalah tipe data yang sudah ditentukan oleh sistem, perbedaannya terletak pada jumlah bit yang dialokasikan untuk setiap bit pada tipe data primitif tergantung pada sistem operasinya.
    Contoh tipe data primitif adalah:
    
-   a) Int : 1, 2, 3, 4, dsb
+   a) Int : tipe data yang digunakan untuk menyimpan bilangan bulat seperti 1, 2, 3, 4, 5 dsb
    
-   b) Float : 2.1, 3.4, 4.3, dsb
+   b) Float : tipe data yang digunakan untuk menyimpan bilangan desimal seperti 2.1, 3.2, 4.7, dsb
    
-   c) Char : A, B, C, dsb
+   c) Char : tipe data yng digunakan untuk menyimpan data berupa sebuah huruf atau variabel seperti A, B, C, dsb
    
-   d) Boolean : true, false
+   d) Boolean : tipe data yang digunkan untuk menyimpan nilai Boolean yang hanya memiliki dua nilai yaitu true, false
    
 3) Tipe data Abstrak
-   Merupakan tipe data yang dibentuk oleh programer itu sendiri. Pada tipe data abstrak bisa berisi banyak tipe data, jadi nilainya bisa lebih dari satu dan beragam tipe data.
+   Merupakan tipe data yang dibentuk oleh programer itu sendiri. Pada tipe data abstrak bisa berisi banyak tipe data, jadi nilainya bisa lebih dari satu dan beragam tipe data. Fitur Class adalah fitur Object Oriented Program(OOP) pada bahasa C++ yang mirip dengan fitur data structures Struct pada bahasa C. Keduanya berfungsi untuk membungkus tipe data di dalamnya sebagai anggota. Perbedaan antara Struct dan Class adalah pada akses defaultnya dimana Struct bersifat public dan Class bersifat private. 
    
 4) Tipe data Koleksi 
    Adalah tipe data yang digunakan untuk mengelompokkan dan menyimpan beberapa nilai atau objek secara bersamaan. Tipe data ini dapat menyimpan, mengelola, dan mengakses sejumlah besar data dengan cara yang terstruktur.
@@ -138,115 +139,135 @@ int main() {
 ### 1. Buatlah program menggunakan tipe data primitif minimal dua fungsi dan bebas. Menampilkan program, jelaskan program tersebut dan ambil kesimpulan dari materi tipe data primitif!
 
 ```C++
-#include<iostream>
-using namespace std;
+#include <iostream>
 
-// Fungsi untuk menambahkan dua bilangan
+// Fungsi untuk menjumlahkan dua bilangan bulat
 int tambah(int a, int b) {
     return a + b;
 }
 
-// Fungsi untuk mengalikan dua bilangan
-int kali(int a, int b) {
+// Fungsi untuk mengalikan dua bilangan riil
+float kali(float a, float b) {
     return a * b;
 }
 
 int main() {
-    int x = 5;
-    int y = 10;
+    // Memanggil fungsi tambah
+    int hasil_tambah = tambah(5, 3);
+    std::cout << "Hasil penjumlahan: " << hasil_tambah << std::endl;
 
-    cout << "Hasil penjumlahan x dan y adalah: " << tambah(x, y) << endl;
-    cout << "Hasil perkalian x dan y adalah: " << kali(x, y) << endl;
+    // Memanggil fungsi kali
+    float hasil_kali = kali(2.5, 4.0);
+    std::cout << "Hasil perkalian: " << hasil_kali << std::endl;
 
     return 0;
 }
 ```
 #### Output:
-![Screenshot 2024-03-20 085913](https://github.com/ratihambara/Praktikum-Struktur-Data-Assignment/assets/161399790/7d23e55a-7911-4ac0-be7b-39aec8721b58)
+![Screenshot (756)](https://github.com/hinaila/Praktikum-Struktur-Data-Assignment/assets/161398108/7fd4c00c-b530-48b3-aef4-42c42695408c)
 
-Program ini mendefinisikan dua fungsi, tambah dan kali, yang masing-masing melakukan penjumlahan dan perkalian dua bilangan. Fungsi-fungsi ini menerima dua argumen bertipe int (integer) dan mengembalikan hasilnya yang juga bertipe int. Di dalam fungsi main, kita mendefinisikan dua variabel x dan y yang bertipe int, lalu kita memanggil fungsi tambah dan kali dengan x dan y sebagai argumen.
 
-Dari program ini, dapat diambil kesimpulan bahwa tipe data primitif seperti int sangat penting dalam pemrograman karena dapat digunakan untuk menyimpan dan memanipulasi data. 
+Program ini mendefinisikan dua fungsi, penjumlahan dan perkalian. Fungsi-fungsi ini menerima dua argumen bertipe int (integer) dan mengembalikan hasilnya yang juga bertipe int. Dalam fungsi main, kita mendefinisikan dua variabel x dan y yang bertipe int, lalu kita memanggil fungsi tambah dan kali dengan x dan y sebagai argumen. Dalam program ini, diambil kesimpulan bahwa tipe data primitif seperti integer sangat dibutuhkan untuk menyimpan dan mengelola suatu data.
+
 
 ### 2.  Jelaskan fungsi dari class dan struct secara detail dan berikan contoh programnya!
-
-```C++
-#include<iostream>
-using namespace std;
-
-// Mendefinisikan struct
-struct Mahasiswa {
-    string nama;
-    int umur;
-    double ipk;
-};
-
-// Mendefinisikan class
-class Mobil {
-private:
-    string merk;
-    int tahun;
-public:
-    Mobil(string m, int t) {
-        merk = m;
-        tahun = t;
-    }
-    void tampilkan() {
-        cout << "Merk mobil : " << merk << ", Tahun: " << tahun << endl;
-    }
-};
-
-int main() {
-    // Membuat objek dari struct
-    Mahasiswa mhs1;
-    mhs1.nama = "Budi";
-    mhs1.umur = 20;
-    mhs1.ipk = 3.5;
-    cout << "Nama: " << mhs1.nama << ", Umur: " << mhs1.umur << ", IPK: " << mhs1.ipk << endl;
-
-    // Membuat objek dari class
-    Mobil mobil1("Toyota", 2010);
-    mobil1.tampilkan();
-
-    return 0;
-}
-```
-#### Output:
-![Screenshot 2024-03-20 090021](https://github.com/ratihambara/Praktikum-Struktur-Data-Assignment/assets/161399790/e0b89c4a-ab3e-4bf9-90e8-5edce35db24f)
 
 Class dan struct adalah dua fitur penting dalam pemrograman berorientasi objek (OOP) dalam C++. Keduanya digunakan untuk mendefinisikan tipe data baru yang dapat mencakup data dan fungsi.
 
 Class adalah tipe data yang digunakan untuk mendefinisikan objek dengan menyatukan variabel dan fungsi dalam satu unit. Class biasanya digunakan untuk mendefinisikan objek yang lebih kompleks yang memerlukan metode dan properti. Dalam class, anggota data dan fungsi secara default bersifat private.
 
+```C++
+#include <iostream>
+
+// Definisi class
+class Mahasiswa {
+public:
+    // Variabel anggota (data)
+    std::string nama;
+    int usia;
+
+    // Metode untuk menampilkan data mahasiswa
+    void displayInfo() {
+        std::cout << "Nama: " << nama << std::endl;
+        std::cout << "Usia: " << usia << std::endl;
+    }
+};
+
+int main() {
+    // Membuat objek dari class Mahasiswa
+    Mahasiswa mhs1;
+
+    // Mengatur nilai variabel anggota
+    mhs1.nama = "Budi";
+    mhs1.usia = 20;
+
+    // Memanggil metode untuk menampilkan informasi
+    mhs1.displayInfo();
+
+    return 0;
+}
+```
+
+#### Output:
+![Screenshot (756)](https://github.com/hinaila/Praktikum-Struktur-Data-Assignment/assets/161398108/df31930c-907c-435b-830e-a696bc13b494)
+
+
 Struct mirip dengan class, tetapi secara tradisional digunakan untuk mengelompokkan variabel yang terkait erat. Dalam struct, anggota data dan fungsi secara default bersifat public.
-Dari program ini, kita dapat mengambil kesimpulan bahwa class dan struct dalam C++ sangat penting untuk mendefinisikan tipe data baru yang dapat mencakup data dan fungsi, dan mereka memainkan peran penting dalam pemrograman berorientasi objek.
+
+```C++
+#include <iostream>
+
+// Definisi struct
+struct Mahasiswa {
+    // Variabel anggota (data)
+    std::string nama;
+    int usia;
+};
+
+int main() {
+    // Membuat objek dari struct Mahasiswa
+    Mahasiswa mhs1;
+
+    // Mengatur nilai variabel anggota
+    mhs1.nama = "Budi";
+    mhs1.usia = 20;
+
+    // Menampilkan informasi menggunakan objek struct
+    std::cout << "Nama: " << mhs1.nama << std::endl;
+    std::cout << "Usia: " << mhs1.usia << std::endl;
+
+    return 0;
+}
+```
+
+Dari contoh kedua program class dan struct diatas, kita dapat mengambil kesimpulan bahwa class dan struct dalam C++ sangat penting untuk mendefinisikan tipe data baru yang dapat mencakup data dan fungsi, dan mereka memainkan peran penting dalam pemrograman berorientasi objek.
 
 ### 3. Buat dan jelaskan program menggunakan fungsi map dan jelaskan perbedaan dari array dengan map!
 
 ```C++
-#include<iostream>
-#include<map>
-using namespace std;
+#include <iostream>
+#include <map>
 
 int main() {
-    // Membuat map baru
-    map<string, int> umur;
+    // Membuat objek map yang berisi pasangan kunci-nilai (key-value)
+    std::map<std::string, int> umur;
 
-    // Menambahkan pasangan kunci-nilai ke dalam map
-    umur["Ali"] = 20;
+    // Menambahkan elemen ke dalam map
     umur["Budi"] = 25;
-    umur["Citra"] = 22;
+    umur["Ani"] = 20;
+    umur["Cindy"] = 30;
 
-    // Mengakses nilai dalam map menggunakan kunci
-    cout << "Umur Ali: " << umur["Ali"] << endl;
-    cout << "Umur Budi: " << umur["Budi"] << endl;
-    cout << "Umur Citra: " << umur["Citra"] << endl;
+    // Mengakses nilai berdasarkan kunci
+    std::cout << "Umur Budi: " << umur["Budi"] << std::endl;
+    std::cout << "Umur Ani: " << umur["Ani"] << std::endl;
+    std::cout << "Umur Cindy: " << umur["Cindy"] << std::endl;
 
     return 0;
 }
 ```
 #### Output:
-![Screenshot 2024-03-20 090102](https://github.com/ratihambara/Praktikum-Struktur-Data-Assignment/assets/161399790/935ed45e-06de-442e-b17d-8ddf840b1ae9)
+![Screenshot (758)](https://github.com/hinaila/Praktikum-Struktur-Data-Assignment/assets/161398108/2332ac2b-3833-4093-b6a4-c17ec6007324)
+
 
 Program ini mendefinisikan sebuah map yang memetakan string ke int.
 Perbedaan antara array dan map:
@@ -256,9 +277,4 @@ Perbedaan antara array dan map:
 - *Map* adalah struktur data yang menyimpan pasangan kunci-nilai. Kunci dalam map bisa berupa tipe data apa pun, dan tidak harus berupa angka. Map juga tidak memiliki ukuran tetap.
 
 ## Kesimpulan
-Tipe data adalah sebuah pengelompokan atau pengklasifikasian data berdasarkan jenis data tersebut. Tipe data yang akan dipelajari, yaitu: Tipe data primitif, Tipe data abstrak, dan Tipe data koleksi
-
-## Referensi
-Karumanchi, N. (2016). Data Structures and algorithms made easy: Concepts, problems, Interview Questions. CareerMonk Publications.
-
-TylerMSFT. (n.d.). Collections (C++/CX). diakses dari https://learn.microsoft.com/en-us/cpp/cppcx/collections-c-cx?view=msvc-170
+Tipe data adalah sebuah pengelompokan atau pengklasifikasian data berdasarkan jenis data tersebut. Tipe data adalah kategori yang mendefinisikan jenis nilai yang dapat disimpan dalam variabel atau digunakan dalam ekspresi. Setiap tipe data memiliki ukuran yang berbeda dan aturan operasional yang berbeda pula. Tipe data yang akan dipelajari, yaitu: Tipe data primitif, Tipe data abstrak, dan Tipe data koleksi.
