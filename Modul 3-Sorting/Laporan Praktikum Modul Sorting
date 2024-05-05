@@ -19,28 +19,7 @@ Bubble  Sort adalah  jenis  sorting  yang digunakan untuk  mengurutkan  data den
 ### 2. SELECTION SORTING
 Algoritma selection sort adalah salah satu algoritma pengurutan sederhana yang beroperasi dengan cara memilih elemen terkecil dari daftar dan menukarnya dengan elemen pertama. Kemudian, ia akan  memilih  elemen  terkecil  dari  sisa  daftar  dan  menukarnya  dengan  elemen  kedua,  dan seterusnya, hingga seluruh daftar terurut [2].
 
-Contoh prosedur selection sort dalam bahasa C++
 
-```C++
-#include<iostream>
-using namespace std;
-
-void SelectSort(arr[], int n){
-    int pos_main, temp;
-    for (int i=0; i< n-1; i++){
-        pos_min = i;
-        for (int j=i+1; j < n; j++){
-            if (arr[j] > arr[pos_min])
-            pos_min=j;
-        }
-        if (pos_min != i) {
-            temp = arr[i];
-            arr[i] = arr[pos_min];
-            arr[pos_min] = temp;
-        }
-    }
-}
-```
 
 ### 3. INSERTION SORTING
 Algoritma insertion sort disebut-sebut sebagai metode pertengahan. Artinya, metode ini memiliki kecepatan rata-rata antara metode primitif (bubble dan selection) dan modern (merge dan quick). Metode ini, didasarkan pada sebuah kunci yang diambil pada elemen ke-2  pada sebuah larik, lalu menyisipkan elemen tersebut jika kondisi percabangan terpenuhi. Metode penyisipan (insertion) bertujuan untuk menjadikan bagian sisi kiri larik terurutkan sampai dengan seluruh larik berhasil diurutkan [2]
@@ -51,32 +30,51 @@ Algoritma insertion sort disebut-sebut sebagai metode pertengahan. Artinya, meto
 ### 1. Mengurutkan secara ascending untuk data numerik bertipe double menggunakan Algoritma Bubble Sort
 
 ```C++
-#include <iostream>
+
+ #include <iostream>
 using namespace std;
 
-int main(){
- int n = 10;
- int data[n] = {9, 4, 1, 7, 5, 12, 4, 13, 4, 10};
- int cari = 10;
- bool ketemu = false;
- int i;
- // algoritma Sequential Search
- for (i = 0; i < n; i++){
-    if(data[i] == cari){
-        ketemu = true;
-        break;
+void bubble_sort(double arr[], int length){
+    bool not_sorted = true;
+    int j=0;
+    double tmp;
+
+    while (not_sorted){
+        not_sorted = false;
+        j++;
+        for (int i = 0; i < length - j; i++){
+            if (arr[i] > arr[i + 1]) {
+                tmp = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = tmp;
+                not_sorted = true;
+            }//end of if
+        }//end of for loop
+    }//end of while loop
+}//end of bubble_sort
+
+void print_array(double a[], int length) {
+    for(int i=0; i<length; i++) {
+        cout << a[i] << "\t";
     }
- }
-    cout << "\t Program Sequential Search Sederhana\n" << endl;
-    cout << " data: {9, 4, 1, 7, 5, 12, 4, 13, 4, 10}"<< endl;
- if (ketemu){
-    cout << "\n angka "<< cari << " ditemukan pada indeks ke-" << i << endl;
- } else {
-    cout << cari << " tidak dapat ditemukan pada data." << endl;
- }
- return 0;
+    cout << endl;
+}
+
+int main() {
+    
+    int length = 5;
+    double a[] = {22.1, 15.3, 8.2, 33.21, 99,99};
+    
+    cout << "Urutan bilangan sebelum sorting: " << endl;
+    print_array(a, length);
+    
+    bubble_sort(a, length);
+    
+    cout << "\nUrutan bilangan setelah sorting: " << endl;
+    print_array(a, length);
 }
 ```
+
 ### Penjelasan
 Program di atas merupakan program untuk mengurutkan data numerik bertipe double dari kecil ke besar (ascending) menggunakan algoritma buble sorting.
 
@@ -90,25 +88,20 @@ Membuat fungsi 'print_array" untuk menerima array 'a' dan panjangnya 'length'. K
 #include <iostream>
 using namespace std;
 
-// Fungsi untuk mengurutkan array secara descending menggunakan algoritma insertion sort
 void insertion_sort(char arr[], int length) {
     int i, j;
     char tmp;
     for (i = 1; i < length; i++) {
         j = i;
-
-        // Membandingkan dan menukar elemen
-        while (j > 0 && arr[j - 1] < arr[j]) { // Perubahan terjadi di sini
-            // Menukar elemen
+        while (j > 0 && arr[j - 1] < arr[j]) {
             tmp = arr[j];
             arr[j] = arr[j - 1];
             arr[j - 1] = tmp;
             j--;
         }//end of while loop
-    }//end of for loop
+    } //end of for loop
 }
 
-// Fungsi untuk mencetak isi array
 void print_array(char a[], int length) {
     for(int i=0; i<length; i++) {
         cout << a[i] << "\t";
@@ -116,20 +109,16 @@ void print_array(char a[], int length) {
     cout << endl;
 }
 int main() {
-    int length = 6; // Jumlah elemen dalam array
+    int length = 6;
     char a[length] = {'c', 'f', 'a', 'z', 'd', 'p'};
     cout << "Urutan karakter sebelum sorting: " << endl;
     print_array(a, length);
-
-    // Memanggil fungsi insertion_sort untuk mengurutkan array secara descending
     insertion_sort(a, length);
-    
     cout << "\nUrutan karakter setelah sorting: " << endl;
     print_array(a, length);
-
-    return 0;
 }
 ```
+
 ### Penjelasan
 Program di atas merupakan program untuk mengurutkan karakter secara descending (terbesar hingga terkecil) menggunakan algoritma insertion sorting.
 
@@ -137,66 +126,54 @@ Pertama, mengimpor library iostream dan lanjut membuat fungsi insertion_sort unt
 
 Kemudian membuat fungsi 'print_array' untuk menerima array 'a' dan panjangnya 'length'. Serta fungsi 'main' untuk mengatur dan memanggil fungsi-fungsi sebelumnya. 
 
-## Unguided 
+## Tugas 
 
 ### 1. Kelas S1 IF 2016 G memiliki 5 mahasiswa. Pada akhir semester mereka menerima lembar Indeks Prestasi Semester (IPS), masing-masing mahasiswa tersebut memiliki IPS sebagai berikut: {3.8, 2.9, 3.3, 4.0, 2.4}. Buatlah program untuk mengurutkan IPS mahasiswa tersebut dari yang terbesar hingga terkecil dengan menggunakan algoritma Selection Sort! (Score: 30)
 
 ```C++
 #include <iostream>
-using namespace std;
 
-// Fungsi untuk mengurutkan array secara descending menggunakan algoritma selection sort
-void selection_sort_descending(float arr[], int n) {
-    int current_max;
-    float tmp;
-
-    // Perulangan untuk iterasi melalui elemen array
+void selectionSort(float arr[], int n) {
     for (int i = 0; i < n - 1; i++) {
-        current_max = i;
-
-        // Perulangan mencari nilai maksimum di dalam array
-        for (int current_item = i + 1; current_item < n; current_item++) {
-            if (arr[current_item] > arr[current_max]) {
-                current_max = current_item;
+        int max_index = i;
+        for (int j = i + 1; j < n; j++) {
+            if (arr[j] > arr[max_index]) {
+                max_index = j;
             }
         }
-
-        // Percabangan jika posisi maksimum bukanlah posisi saat ini, tukar nilai elemen
-        if (current_max != i) {
-            tmp = arr[i];
-            arr[i] = arr[current_max];
-            arr[current_max] = tmp;
-        }
+        // Tukar elemen terbesar dengan elemen ke-i
+        float temp = arr[i];
+        arr[i] = arr[max_index];
+        arr[max_index] = temp;
     }
 }
 
 int main() {
-    // Deklarasi array serta jumlah elemen yang akan diurutkan
-    int n = 5;
-    float arr[] = {3.8, 2.9, 3.3, 4.0, 2.4};
+    float IPS[] = {3.8, 2.9, 3.3, 4.0, 2.4};
+    int n = sizeof(IPS) / sizeof(IPS[0]);
 
-    // Menampilkan array sebelum diurutkan secara descending
-    cout << "Array sebelum diurutkan secara descending: " << endl;
+    std::cout << "IPS sebelum diurutkan: ";
     for (int i = 0; i < n; i++) {
-        cout << arr[i] << "\t";
+        std::cout << IPS[i] << " ";
     }
-    cout << endl;
+    std::cout << std::endl;
 
-    // Memanggil fungsi selection_sort_descending untuk mengurutkan array secara descending
-    selection_sort_descending(arr, n);
+    selectionSort(IPS, n);
 
-    // Menampilkan array setelah diurutkan secara descending
-    cout << "Array setelah diurutkan secara descending: " << endl;
+    std::cout << "IPS setelah diurutkan dari yang terbesar ke terkecil: ";
     for (int i = 0; i < n; i++) {
-        cout << arr[i] << "\t";
+        std::cout << IPS[i] << " ";
     }
-    cout << endl;
+    std::cout << std::endl;
 
     return 0;
 }
 ```
+
+
 #### Output:
-![Screenshot 2024-05-02 221215](https://github.com/grahenmaryamrb/Praktikum-Struktur-Data-Assignment-3/assets/168741067/e369af9c-d83c-408f-9910-5fd08cf5b98f)
+https://1drv.ms/i/c/1007d1edc4cc5662/ESoh9CcPhiVIkRG-S-saG3sBiG8sBt-pJRBSIqP3MlRGCA?e=xXFRbN
+
 ### Penjelasan
 Program di atas merupakan program untuk mengurutkan Indeks Prestasi Semester mahasiwa kelas S1 IF 2016 G dari yang terbesar hingga terkecil dengan menggunakan algoritma Selection Sort. 
 
@@ -209,48 +186,46 @@ Terakhir, mendefinisikan fungsi 'main' yang di dalamnya terdapat sebuah array de
 ```C++
 #include <iostream>
 #include <string>
-using namespace std;
 
-void buble_sort(string arr[], int length){
-    bool not_sorted = true;
-    int j = 0;
-    string tmp;
-
-    while (not_sorted){
-        not_sorted = false;
-        j++;
-        for (int i = 0; i < length - j; i++){
-            if (arr[i] > arr[i + 1]) {
-                tmp = arr[i];
-                arr[i] = arr[i + 1];
-                arr[i + 1] = tmp;
-                not_sorted = true;
-                }//end of if
-            }//end of for loop
-        }//end of while loop
-    }//end of bubble_sort
-    void print_array(string a[], int length) {
-        for(int i=0; i<length; i++) {
-            cout << a[i] << "\t";
+void bubbleSort(std::string arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                // Tukar elemen jika urutan tidak benar
+                std::string temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
         }
-        cout << endl;
     }
-    int main() {
-        int length = 10;
-        string a[] = {"siti", "situ", "sana", "ana", "ani", "caca", "cici", "dida", "dodo", "dadi"};
-        cout << "Urutan nama sebelum di sorting: " << endl;
-        print_array(a, length);
+}
 
-        buble_sort(a, length);
+int main() {
+    std::string names[] = {"siti", "situ", "sana", "ana", "ani", "caca", "cici", "dida", "dodo", "dadi"};
+    int n = sizeof(names) / sizeof(names[0]);
 
-        cout << "\nUrutan nama setelah di sorting: " << endl;
-        print_array(a, length);
-
-        return 0;
+    std::cout << "Nama-nama sebelum diurutkan: ";
+    for (int i = 0; i < n; i++) {
+        std::cout << names[i] << " ";
     }
+    std::cout << std::endl;
+
+    bubbleSort(names, n);
+
+    std::cout << "Nama-nama setelah diurutkan secara alfabet: ";
+    for (int i = 0; i < n; i++) {
+        std::cout << names[i] << " ";
+    }
+    std::cout << std::endl;
+
+    return 0;
+}
 ```
+
 #### Output:
-![Screenshot 2024-05-02 221345](https://github.com/grahenmaryamrb/Praktikum-Struktur-Data-Assignment-3/assets/168741067/ee14a017-b176-4f40-9232-2c3c1eb10342)
+https://1drv.ms/i/c/1007d1edc4cc5662/EWNyTgwgKOdHuqwMrGmlEbYBA3vyQzD2FPYs7NnkD4zv3g?e=JUcukv
+
+
 ### Penjelasan
 Program diatas merupakan program yang dirancang untuk mengurutkan nama-nama 10 warga sesuai alfabet menggunakan algoritma buble sort.
 
@@ -264,85 +239,47 @@ Terakhir, membuat fungsi 'main' untuk memanggil fungsi-fungsi sebelumnya termasu
 
 ```C++
 #include <iostream>
-using namespace std;
+#include <algorithm>
 
-// Fungsi untuk mengurutkan array secara ascending menggunakan algoritma insertion sort
-void insertion_sort_ascending(char arr[], int length) {
-    int i, j;
-    char tmp;
-    for (i = 1; i < length; i++) {
-        j = i;
-
-        // Membandingkan dan menukar elemen
-        while (j > 0 && arr[j - 1] > arr[j]) { // Perubahan terjadi di sini
-            // Menukar elemen
-            tmp = arr[j];
-            arr[j] = arr[j - 1];
-            arr[j - 1] = tmp;
-            j--;
-        }//end of while loop
-    }//end of for loop
-}
-// Fungsi untuk mengurutkan array secara descending menggunakan algoritma insertion sort
-void insertion_sort_descending(char arr[], int length) {
-    int i, j;
-    char tmp;
-    for (i = 1; i < length; i++) {
-        j = i;
-
-        // Membandingkan dan menukar elemen
-        while (j > 0 && arr[j - 1] < arr[j]) { // Perubahan terjadi di sini
-            // Menukar elemen
-            tmp = arr[j];
-            arr[j] = arr[j - 1];
-            arr[j - 1] = tmp;
-            j--;
-        }//end of while loop
-    }//end of for loop
-}
-
-// Fungsi untuk mencetak isi array
-void print_array(char a[], int length) {
-    for(int i=0; i<length; i++) {
-        cout << a[i] << "\t";
-    }
-    cout << endl;
-}
 int main() {
-    // Meminta user untuk memasukkan jumlah karakter
-    int length;
-    cout << "Masukkan jumlah karakter yang ingin di input: ";
-    cin >> length;
+    int n;
+    std::cout << "Masukkan jumlah karakter (n): ";
+    std::cin >> n;
 
-    // Membuat array 'a' dengan panjang sejumlah karakter yang dimasukkan user
-    char a[length];
-
-    // Meminta user untuk memasukkan karakter-karakter sebanyak 'length'
-    cout << "Masukkan " << length << " karakter" << endl;
-    for (int i = 0; i < length; ++i){
-        cout << "karakter ke-" << i+1 << ": ";
-        cin >> a[i];
+    char characters[n];
+    
+    std::cout << "Masukkan " << n << " karakter: ";
+    for (int i = 0; i < n; ++i) {
+        std::cin >> characters[i];
     }
 
-    cout << "\nUrutan karakter sebelum di sorting: " << endl;
-    print_array(a, length);
+    // Sorting menaik
+    std::sort(characters, characters + n);
+    
+    // Menampilkan hasil sorting menaik
+    std::cout << "Hasil sorting menaik: ";
+    for (int i = 0; i < n; ++i) {
+        std::cout << characters[i] << " ";
+    }
+    std::cout << std::endl;
 
-    // Memanggil fungsi insertion_sort_ascending untuk mengurutkan array secara ascending
-    insertion_sort_ascending(a, length);
-
-    cout << "\nUrutan karakter setelah di sorting secara ascending: " << endl;
-    print_array(a, length);
-
-    // Memanggil fungsi insertion_sort_descending untuk mengurutkan array secara descending
-    insertion_sort_descending(a, length);
-    cout << "\nUrutan karakter setelah di sorting secara descending: " << endl;
-    print_array(a, length);
+    // Sorting menurun
+    std::sort(characters, characters + n, std::greater<char>());
+    
+    // Menampilkan hasil sorting menurun
+    std::cout << "Hasil sorting menurun: ";
+    for (int i = 0; i < n; ++i) {
+        std::cout << characters[i] << " ";
+    }
+    std::cout << std::endl;
 
     return 0;
 }
 ```
+
 #### Output:
-![Screenshot 2024-05-02 221418](https://github.com/grahenmaryamrb/Praktikum-Struktur-Data-Assignment-3/assets/168741067/a8a5a35d-76f4-4bd3-9d3d-524ca61b8b94)
+https://1drv.ms/i/c/1007d1edc4cc5662/EbHcvDby6hpHmmiTClthWxMB0KKLCcAwHbUowz5yA3SsqA?e=EiHfzW
+
 ### Penjelasan
 Program diatas merupakan program yang meminta user menginputkan suatu bilangan n dan meminta user untuk menginputkan sejumlah n karakter. Kemudian program akan melakukan sorting secara menaik (ascending) dan menurun (descending) dengan menggunakan aloritma insertion sort.
 
@@ -351,13 +288,6 @@ Program dimulai dengan memanggil library iostream untuk I/O. Selanjutnya, membua
 Kemudian, membuat fungsi 'print_array' untuk menampilkan isi array 'a' dengan panjang 'length'. Dan terakhir, membuat fungsi utama 'main' untuk meminta user memasukkan jumlah karakter, memasukkan karakter-karakter tersebut, memanggil fungsi-fungsi sebelumnya untuk mengurutkan secara ascending maupun descending.
 
 ## Kesimpulan
-#### Hasil praktikum: 
-Pada kesempatan praktikum ini, saya belajar macam-macam algoritma untuk mengurutkan suatu hal tertentu(sorting). Sorting sendiri dapat didefinisikan sebagai pengurutan sejumlah data berdasarkan nilai kunci tertentu. Pengurutan dapat dilakukan dari nilai terkecil ke nilai terbesar (ascending) atau sebaliknya (descending). Berbagai macam tipe algoritma sorting, mulai dari buble sorting, selection sorting, hingga yang paling efektif adalah insertion sorting.
+Ada beberapa tipe algoritma sorting yaitu insertion sort yang merupakan algoritma sorting yang bekerja dengan cara membandingkan dan mengurutkan dua data pertama pada array, kemudian membandingkan data para array berikutnya apakah sudah berada di tempat semestinya. Lalu ada selection sort yang bekerja dengan cara mencari nilai tertinggi / terendah di dalam array kemudian menempatkan nilai tersebut di tempat semestinya. Terakhir ada bubble sort yang merupakan metode pengurutan algoritma dengan cara melakukan penukaran data secara terus menerus sampai bisa dipastikan dalam suatu iterasi tertentu tidak ada lagi perubahan/penukaran.
 
-#### Pelajaran yang didapat
-Sorting adalah proses pengurutan atau penyusunan data dalam suatu urutan tertentu, baik itu dari yang terkecil ke yang terbesar (ascending) maupun sebaliknya (descending). Terdapat berbagai macam algoritma sorting yang dapat digunakan, seperti buble sorting, selection sorting, maupun insertion sorting, yang memiliki kelebihan dan kekurangan masing-masing tergantung pada kondisi dan ukuran data yang diurutkan.
-
-## Referensi
-[1] Wahyu Fahmy Wisudawan, “Kompleksitas Algoritma Sorting yang Populer Dipakai”, 2008.
-
-[2] Muhammad Farhan Abdullah, Isna Hafiza, Rama Wahyuni, Adrian Syahputra, “Penggunaan Algoritma Bubble Sortdalam Pengurutan Nomor Induk Mahasiswa”, 2023.
+Pada unguided 3 ini kita belajar bagaimana implementasi dari algoritma sorting untuk mengurutkan nilai array secara ascending menggunakan algoritma Selection Sort, mengurutkan nama sesuai abjad menggunakan algoritma bubble sort, dan mengurutkan karakter secara ascending lalu descending menggunakan fungsi inputan.
