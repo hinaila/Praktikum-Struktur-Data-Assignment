@@ -5,19 +5,21 @@
 ## Dasar Teori
 
 # A. Stack
-Stack adalah struktur data sederhana yang digunakan untuk menyimpan data (mirip dengan Linked Lists). Sebuah tumpukan atau stack adalah daftar terurut di mana penyisipan dan penghapusan dilakukan di satu ujung (atas). Elemen terakhir yang dimasukkan adalah yang pertama dihapus. Oleh karena itu, disebut Last in First out (LIFO). 
+Stack adalah struktur data yang mengakses data secara LIFO (yang terakhir datang, yang awal diproses). Kelas di Java yang dapat mengimplementasikan stack adalah Stack. Stack merupakan turunan dari Vector, sehingga seluruh operasi dari vector dapat digunakan di Stack.
 Operasi pada stack memiliki fungsi dasar, beberapa diantaranya yaitu Push (memasukkan) : Menambahkan elemen ke dalam tumpukan pada posisi paling atas atau ujung, dan Pop (mengeluarkan) : Menghapus elemen dari posisi paling atas atau ujung tumpukan.
 
+
 # B. Queue
-Queue adalah struktur data yang digunakan untuk menyimpan data dengan metode FIFO (First-In First-Out). Queue mirip dengan konsep antrian pada kehidupan sehari-hari, dimana konsumen yang datang lebih dulu akan dilayani terlebih dahulu. Struktur data queue terdiri dari dua pointer yaitu front dan rear. Front/head adalah pointer ke elemen pertama dalam queue dan rear/tail/back adalah pointer ke elemen terakhir dalam queue.
+Queue adalah struktur data yang mengakses data secara FIFO (yang awal datang, yang awal diproses). Kelas di Java yang dapat mengimplementasikan queue adalah LinkedList dan PriorityQueue. Queue mirip dengan konsep antrian pada kehidupan sehari-hari, dimana konsumen yang datang lebih dulu akan dilayani terlebih dahulu. Struktur data queue terdiri dari dua pointer yaitu front dan rear. Front/head adalah pointer ke elemen pertama dalam queue dan rear/tail/back adalah pointer ke elemen terakhir dalam queue.
 Operasi pada queue memiliki fungsi dasar, beberapa diantaranya yaitu enqueue() : menambahkan data ke dalam queue dan dequeue() : mengeluarkan data dari queue.
 
 
 Perbedaan antara stack dan queue terdapat pada aturan penambahan dan penghapusan elemen. Pada stack, operasi penambahan dan penghapusan elemen dilakukan di satu ujung. Elemen yang terakhir diinputkan akan berada paling atas sehingga pada operasi penghapusan, elemen teratas tersebut akan dihapus paling awal, sifat demikian dikenal dengan LIFO. Sedangkan pada Queue, operasi tersebut dilakukan ditempat berbeda (melalui salah satu ujung) karena perubahan data selalu mengacu pada Head, maka hanya ada 1 jenis insert maupun delete, sifat demikian dikenal dengan FIFO (First-In First-Out).
 
+
 ## Guided 
 
-### 1. Stack
+### Stack
 
 ```C++
 #include <iostream>
@@ -123,7 +125,11 @@ int main() {
 }
 ```
 
-### 2. Queue
+## Output
+![Screenshot (919)](https://github.com/hinaila/Praktikum-Struktur-Data-Assignment/assets/161398108/9186e6bb-883f-4cf7-97dc-76cbae91f640)
+
+
+### Queue
 
 ```C++
 #include <iostream>
@@ -218,50 +224,81 @@ int main() {
 }
 ```
 
+## Output
+![Screenshot (920)](https://github.com/hinaila/Praktikum-Struktur-Data-Assignment/assets/161398108/deedaa8a-da43-48ae-b433-7bcc5171ad45)
+
+
 ## Unguided 
 
 ### 1. Buatlah program untuk menentukan apakah kalimat tersebut yang diinputkadalam program stack adalah palindrom/tidak. Palindrom kalimat yang dibaca dari depan dan belakang sama. Jelaskan bagaimana cara kerja programnya.
+![Screenshot (927)](https://github.com/hinaila/Praktikum-Struktur-Data-Assignment/assets/161398108/be65aba0-11dc-460b-98d8-d09d79c44c88)
+
 
 ```C++
 #include <iostream>
 #include <stack>
-#include <string>
+#include <cctype> // Untuk menggunakan isalnum()
 
-bool cekPalindrom(const std::string& kalimat) {
-    std::stack<char> s;
-    for (char c : kalimat) {
-        s.push(c);
-    }
+using namespace std;
 
-    for (char c : kalimat) {
-        if (c != s.top()) {
-            return false;
+// Fungsi untuk menghapus karakter non-alphanumeric dari sebuah string
+string removeNonAlphaNumeric(string str) {
+    string result = "";
+    for (char c : str) {
+        if (isalnum(c)) {
+            result += tolower(c); // Mengubah ke huruf kecil untuk memperlakukan huruf kapital dan huruf kecil sebagai sama
         }
-        s.pop();
+    }
+    return result;
+}
+
+// Fungsi untuk menentukan apakah sebuah string adalah palindrom atau tidak
+bool isPalindrome(string str) {
+    stack<char> charStack;
+    int len = str.length();
+
+    // Memasukkan karakter ke dalam stack
+    for (int i = 0; i < len; ++i) {
+        charStack.push(str[i]);
     }
 
-    return true;
+    // Membandingkan karakter pada string dengan karakter pada stack
+    for (int i = 0; i < len; ++i) {
+        if (str[i] != charStack.top()) {
+            return false; // Tidak palindrom
+        }
+        charStack.pop();
+    }
+    return true; // Palindrom
 }
 
 int main() {
-    std::string kalimat;
-    std::cout << "Masukkan kalimat: ";
-    std::cin >> kalimat;
+    string sentence;
+    cout << "Masukkan kalimat: ";
+    getline(cin, sentence);
 
-    if (cekPalindrom(kalimat)) {
-        std::cout << "Kalimat tersebut adalah palindrom\n";
+    // Menghapus karakter non-alphanumeric dan mengubah huruf menjadi lowercase
+    string cleanSentence = removeNonAlphaNumeric(sentence);
+
+    // Memeriksa apakah kalimat adalah palindrom
+    if (isPalindrome(cleanSentence)) {
+        cout << "Kalimat tersebut adalah palindrom.\n";
     } else {
-        std::cout << "Kalimat tersebut adalah bukan palindrom\n";
+        cout << "Kalimat tersebut bukan palindrom.\n";
     }
 
     return 0;
 }
 ```
 #### Output:
-![Screenshot 2024-05-16 203742](https://github.com/ratihambara/Praktikum-Struktur-Data-Assignment/assets/161399790/0075134b-ef4d-44d3-a6f0-57a74ef3875e)
+![Screenshot (921)](https://github.com/hinaila/Praktikum-Struktur-Data-Assignment/assets/161398108/5e48cbc9-1970-4c13-81d9-5265b864c45c)
 
 Cara kerja program ini adalah sebagai berikut:
-Program ini pertama-tama membaca kalimat yang dimasukkan oleh pengguna. Kemudian, program ini memasukkan setiap karakter dari kalimat tersebut ke dalam stack. Setelah itu, program ini membandingkan setiap karakter dari kalimat tersebut dengan karakter teratas dari stack. Jika karakter tersebut tidak sama dengan karakter teratas dari stack, maka program ini akan mengembalikan false, yang berarti kalimat tersebut bukan palindrom. Jika semua karakter dari kalimat tersebut sama dengan karakter teratas dari stack, maka program ini akan mengembalikan true, yang berarti kalimat tersebut adalah palindrom.
+1. Membaca kalimat yang dimasukkan oleh user.
+2. Kemudian, program ini memasukkan setiap karakter dari kalimat tersebut ke dalam stack.
+3. Membandingkan setiap karakter dari kalimat tersebut dengan karakter teratas dari stack.
+4. Jika karakter tidak sama dengan karakter teratas dari stack, maka program ini akan mengembalikan false, yang berarti kalimat tersebut bukan palindrom.
+5. Jika semua karakter dari kalimat tersebut sama dengan karakter teratas dari stack, maka program akan mengembalikan true, yang berarti kalimat tersebut adalah palindrom.
 
 ### 2.   Ubah guided queue diatas agar menjadi program inputan user dan program menu.
 
@@ -269,29 +306,43 @@ Program ini pertama-tama membaca kalimat yang dimasukkan oleh pengguna. Kemudian
 #include <iostream>
 using namespace std;
 
-const int maksimalQueue = 5;
-int front = 0;
-int back = 0;
-string queueTeller[5];
+const int maksimalQueue = 4; // Maksimal antrian
+int front = 0; // Penanda depan antrian
+int back = 0; // Penanda belakang antrian
+string queueTeller[5]; // Array untuk menyimpan antrian
 
-bool isFull() {
-    return back == maksimalQueue;
-}
-
-bool isEmpty() {
-    return back == 0;
-}
-
-void enqueueAntrian(string data) {
-    if (isFull()) {
-        cout << "Antrian penuh" << endl;
+bool isFull() { // Pengecekan antrian penuh atau tidak
+    if (back == maksimalQueue) {
+        return true; // =1
     } else {
-        queueTeller[back] = data;
-        back++;
+        return false;
     }
 }
 
-void dequeueAntrian() {
+bool isEmpty() { // Antrian kosong atau tidak
+    if (back == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+void enqueueAntrian(string data) { // Menambahkan antrian
+    if (isFull()) {
+        cout << "Antrian penuh" << endl;
+    } else {
+        if (isEmpty()) { // Jika antrian kosong
+            queueTeller[0] = data;
+            front++;
+            back++;
+        } else { // Jika antrian ada isi
+            queueTeller[back] = data;
+            back++;
+        }
+    }
+}
+
+void dequeueAntrian() { // Mengurangi antrian
     if (isEmpty()) {
         cout << "Antrian kosong" << endl;
     } else {
@@ -302,7 +353,11 @@ void dequeueAntrian() {
     }
 }
 
-void clearQueue() {
+int countQueue() { // Menghitung jumlah antrian
+    return back;
+}
+
+void clearQueue() { // Menghapus semua antrian
     if (isEmpty()) {
         cout << "Antrian kosong" << endl;
     } else {
@@ -310,10 +365,11 @@ void clearQueue() {
             queueTeller[i] = "";
         }
         back = 0;
+        front = 0;
     }
 }
 
-void viewQueue() {
+void viewQueue() { // Melihat isi antrian
     cout << "Data antrian teller:" << endl;
     for (int i = 0; i < maksimalQueue; i++) {
         if (queueTeller[i] != "") {
@@ -364,15 +420,21 @@ int main() {
     return 0;
 }
 ```
+
 #### Output:
-![Screenshot 2024-05-16 204122](https://github.com/ratihambara/Praktikum-Struktur-Data-Assignment/assets/161399790/f199651f-dac3-40bb-b194-d71f510642b4)
-![Screenshot 2024-05-16 204144](https://github.com/ratihambara/Praktikum-Struktur-Data-Assignment/assets/161399790/43bfacdb-cdd9-4c45-864d-4f8a42f51b52)
-![Screenshot 2024-05-16 204200](https://github.com/ratihambara/Praktikum-Struktur-Data-Assignment/assets/161399790/4776dd9c-b359-4757-85a4-3cd3123c863c)
+![Screenshot (922)](https://github.com/hinaila/Praktikum-Struktur-Data-Assignment/assets/161398108/62bba7b2-dfd3-4349-9ad8-77a0e65aa04d)
+
+![Screenshot (923)](https://github.com/hinaila/Praktikum-Struktur-Data-Assignment/assets/161398108/a2b07978-7e12-4214-9e3c-0245133b225b)
+
+![Screenshot (924)](https://github.com/hinaila/Praktikum-Struktur-Data-Assignment/assets/161398108/be77e0e5-238c-4bed-bfdd-21bbce9f0266)
+
+![Screenshot (925)](https://github.com/hinaila/Praktikum-Struktur-Data-Assignment/assets/161398108/f5055255-cd17-42a4-8c22-493cf0c4075f)
+
+![Screenshot (926)](https://github.com/hinaila/Praktikum-Struktur-Data-Assignment/assets/161398108/64f204e1-2f16-4855-95f1-be41dc347b02)
+
 
 ## Kesimpulan
 Stack adalah struktur data sederhana yang digunakan untuk menyimpan data (mirip dengan Linked Lists). Metode dalam Stack disebut Last in First out (LIFO). Sedangkan Queue adalah struktur data yang digunakan untuk menyimpan data dengan metode FIFO (First-In First-Out). Queue mirip dengan konsep antrian pada kehidupan sehari-hari.
 
 ## Referensi
-Karumanchi, N. (2016). Data Structures and algorithms made easy: Concepts, problems, Interview Questions. CareerMonk Publications.
-
-[TylerMSFT. (n.d.). Collections (C++/CX). diakses dari https://learn.microsoft.com/en-us/cpp/cppcx/collections-c-cx?view=msvc-170](https://copilot.microsoft.com/?FORM=undexpand&)
+Sihombing, J. (2020). Penerapan  Stack  dan  Queue  pada  Array dan  Linked  List dalam  Java. Program Studi Manajemen Informatika DIV  Politeknik Piksi Ganesha.
