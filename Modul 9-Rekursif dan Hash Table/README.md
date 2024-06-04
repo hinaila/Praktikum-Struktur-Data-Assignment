@@ -64,17 +64,6 @@ int main() {
 ![Screenshot (1082)](https://github.com/hinaila/Praktikum-Struktur-Data-Assignment/assets/161398108/87c0c193-d544-47a4-8683-f896508fd040)
 
 
-### Penjelasan
-Program diatas merupakan program rekursif langsung dimana menggunakan konsep rekursif untuk melakukan hitung mundur dari angka yang diinputkan.
-
-Pertama, fungsi 'countdown' menerima sebuah parameter ''n'' yang merupakan angka awal untuk hitung mundur. Di dalam fungsi 'countdown', terdapat sebuah kondisi if ('n' >= 1). Jika kondisi ini terpenuhi (artinya 'n' masih lebih besar atau sama dengan 1), maka program akan melakukan dua hal:
-<pre>
-a. Mencetak nilai ''n'' ke layar (misalnya, jika 'n' = 5, akan mencetak "5 ").
-b. Memanggil fungsi 'countdown' lagi dengan nilai 'n' - 1 (dalam kasus ini, countdown(4)).
-</pre>
-Proses ini akan terus berlanjut secara rekursif sampai nilai 'n' menjadi 0, di mana kondisi if ('n' >= 1) tidak terpenuhi lagi, dan rekursi akan berhenti. 
-Terakhir, fungsi utama 'main' bekerja dengan program memanggil fungsi 'countdown' dengan nilai awal 5, sehingga akan melakukan hitung mundur dari 5 hingga 1. Setelah hitung mundur selesai, program akan keluar dengan status normal (return 0).
-
 ### 2. Rekursif Tidak Langsung (Indirect Recursion)
 ```C++
 #include <iostream>
@@ -106,32 +95,6 @@ int main() {
 ### Output
 ![Screenshot (1083)](https://github.com/hinaila/Praktikum-Struktur-Data-Assignment/assets/161398108/0b8e6c98-78fe-40ea-9fea-e1474e53c79d)
 
-
-### Penjelasan
-Program diatas merupakan program rekursif di mana dua fungsi saling memanggil satu sama lain secara rekursif.
-
-Pertama, fungsi 'functionA' menerima sebuah parameter 'n' dan melakukan pengecekan kondisi if ('n' > 0). Jika kondisi terpenuhi, maka program akan:
-<pre>
-a. Mencetak nilai 'n' ke layar.
-b. Memanggil fungsi 'functionB' dengan nilai 'n' - 1 secara rekursif.
-</pre>
-Fungsi 'functionB' juga menerima sebuah parameter 'n' dan melakukan pengecekan kondisi if ('n' > 0). Jika kondisi terpenuhi, maka program akan:
-<pre>
-a. Mencetak nilai 'n' ke layar.
-b. Memanggil fungsi 'functionA' dengan nilai 'n' / 2 secara rekursif.
-</pre>
-
-Terakhir, dalam fungsi utama 'main', program memanggil fungsi 'functionA' dengan nilai awal 5. Ketika 'functionA' dipanggil dengan nilai 5, kondisi if ('n' > 0) terpenuhi, sehingga program akan:
-<pre>
-a. Mencetak nilai 5 ke layar.
-b. Memanggil 'functionB' dengan nilai 4 (5 - 1).
-</pre>
-Di dalam 'functionB' dengan nilai 4, kondisi if ('n' > 0) juga terpenuhi, sehingga program akan:
-<pre>
-a. Mencetak nilai 4 ke layar.
-b. Memanggil 'functionA' dengan nilai 2 (4 / 2).
-</pre>
-Proses ini akan terus berlanjut secara rekursif, dengan 'functionA' dan 'functionB' saling memanggil satu sama lain dengan nilai yang terus berkurang, sampai akhirnya kondisi if ('n' > 0) tidak terpenuhi lagi, dan rekursi akan berhenti. Setelah rekursi selesai, program akan keluar dengan status normal (return 0).
 
 ### 3. Hash Table
 ```C++
@@ -242,14 +205,6 @@ return 0;
 ### Output
 ![Screenshot (1084)](https://github.com/hinaila/Praktikum-Struktur-Data-Assignment/assets/161398108/a3a61a7d-788a-48ba-b79c-3ee61b8027f0)
 
-### Penjelasan
-Program diatas merupakan implementasi struktur data Hash Table untuk menyimpan dan mengakses pasangan nama dan nomor telepon karyawan. 
-
-Pertama, Terdapat sebuah kelas 'HashNode' yang mewakili setiap node pada hash map. Node ini berisi atribut 'name' dan 'phone_number'. Kelas utama adalah 'HashMap' yang memiliki array vektor table dengan ukuran tetap TABLE_SIZE (dalam kasus ini 11). Setiap elemen pada array ini adalah vektor yang menyimpan node-node hash. Fungsi 'hashFunc' digunakan untuk menghitung nilai hash dari sebuah kunci (nama) dengan menjumlahkan nilai ASCII setiap karakternya dan mengambil sisa pembagian dengan TABLE_SIZE. Nilai hash ini digunakan sebagai indeks untuk menyimpan atau mencari node pada array table. Fungsi 'insert' digunakan untuk memasukkan pasangan nama dan nomor telepon ke dalam hash map. Jika nama sudah ada, nomor teleponnya akan diperbarui. Jika tidak, node baru akan ditambahkan ke vektor pada indeks yang sesuai dengan nilai hash dari nama tersebut. Fungsi 'remove' digunakan untuk menghapus node dengan nama tertentu dari hash map. Fungsi ini mencari node pada indeks yang sesuai dengan nilai hash dari nama, dan menghapusnya jika ditemukan. Fungsi 'searchByName' digunakan untuk mencari nomor telepon berdasarkan nama yang diberikan. Fungsi ini menghitung nilai hash dari nama, lalu memeriksa setiap node pada vektor di indeks yang sesuai. Jika nama ditemukan, nomor teleponnya akan dikembalikan. Jika tidak, string kosong akan dikembalikan. Fungsi 'print' digunakan untuk mencetak seluruh isi hash map dalam format yang mudah dibaca.
-
-Terakhir, fungsi utama 'main', program membuat sebuah objek HashMap dan memanggil fungsi-fungsi di atasnya untuk memasukkan, mencari, menghapus, dan mencetak isi hash map.
-
-
 
 ## Unguided
 ### 1. Buatlah sebuah program Rekursif Langsung (Direct Recursion) yang menghitung nilai faktorial dari sebuah inputan bilangan bulat positif!
@@ -282,18 +237,11 @@ int main() {
 #### Output:
 ![Screenshot (1085)](https://github.com/hinaila/Praktikum-Struktur-Data-Assignment/assets/161398108/02df8ea4-921f-4f9b-a285-1b7a3204e7ab)
 
-### Penjelasan
-Program diatas merupakan program Rekursif Langsung (Direct Recursion) yang menghitung nilai faktorial dari sebuah inputan bilangan bulat positif.
+Program diatas merupakan program Rekursif Langsung (Direct Recursion) yang menghitung nilai faktorial dari sebuah inputan bilangan bulat positif. Kode ini menggunakan fungsi hitungFactorial yang menerima inputan angka dan menghitung faktorialnya secara rekursif. Fungsi ini memanggil dirinya sendiri dengan mengurangi nilai input sebanyak satu setiap kali hingga mencapai angka 1.
 
-Pertama, program memiliki sebuah fungsi bernama factorial yang menerima sebuah parameter n bertipe integer. Fungsi factorial melakukan pengecekan terhadap nilai n:
 <pre>
-a. Jika n sama dengan 0, maka fungsi akan mengembalikan nilai 1. Ini merupakan basis kasus (base case) dari rekursi, karena faktorial dari 0 adalah 1 (0! = 1).
+a. Jika n sama dengan 0, maka fungsi akan mengembalikan nilai 1. Karena faktorial dari 0 adalah 1 (0! = 1).
 b. Jika n tidak sama dengan 0, maka fungsi akan melakukan operasi rekursif dengan rumus n! = n * (n-1)!. Artinya, fungsi factorial akan memanggil dirinya sendiri dengan argumen (n-1) dan mengalikan hasilnya dengan n.
-</pre>
-Terakhir, dalam fungsi utama 'main()', program meminta pengguna untuk memasukkan sebuah bilangan bulat positif. Program melakukan pengecekan terhadap bilangan yang dimasukkan:
-<pre>
-a. Jika bilangan yang dimasukkan lebih besar atau sama dengan 0, maka program akan memanggil fungsi factorial dengan bilangan tersebut sebagai argumen, dan menampilkan hasilnya ke layar.
-b. Jika bilangan yang dimasukkan kurang dari 0, maka program akan menampilkan pesan error karena faktorial hanya dapat dihitung untuk bilangan bulat positif.
 </pre>
 
 
@@ -345,26 +293,7 @@ int main() {
 #### Output
 ![Screenshot (1086)](https://github.com/hinaila/Praktikum-Struktur-Data-Assignment/assets/161398108/1afffd83-b180-475c-815d-3bff823f181b)
 
-### Penjelasan
-Program diatas merupakan program yang sama dengan program soal nomor 1 akan tetapi menggunakan Rekursif Tidak Langsung (Indirect Recursion).
-
-Pertama, program memiliki dua fungsi rekursif, yaitu factorialA dan factorialB.
-Fungsi factorialA menerima sebuah parameter n bertipe integer dan melakukan pengecekan:
-<pre>
-a. Jika n sama dengan 0, maka fungsi akan mengembalikan nilai 1 (basis kasus).
-b. Jika n tidak sama dengan 0, maka fungsi akan memanggil fungsi factorialB dengan argumen (n-1) dan mengalikan hasilnya dengan n.
-</pre>
-Fungsi factorialB juga menerima sebuah parameter n bertipe integer dan melakukan pengecekan:
-<pre>
-a. Jika n sama dengan 0, maka fungsi akan mengembalikan nilai 1 (basis kasus).
-b. Jika n tidak sama dengan 0, maka fungsi akan memanggil fungsi factorialA dengan argumen (n-1) dan mengalikan hasilnya dengan n.
-</pre>
-Terakhir, dalam fungsi utama 'main()', program meminta pengguna untuk memasukkan sebuah bilangan bulat positif. Program melakukan pengecekan terhadap bilangan yang dimasukkan:
-<pre>
-a. Jika bilangan yang dimasukkan lebih besar atau sama dengan 0, maka program akan memanggil fungsi factorialA dengan bilangan tersebut sebagai argumen, dan menampilkan hasilnya ke layar.
-b. Jika bilangan yang dimasukkan kurang dari 0, maka program akan menampilkan pesan error karena faktorial hanya dapat dihitung untuk bilangan bulat positif. Ketika fungsi factorialA dipanggil, ia akan melakukan pemanggilan rekursif tidak langsung ke fungsi factorialB, dan begitu pula sebaliknya. Proses ini akan berlanjut sampai akhirnya mencapai basis kasus n = 0 pada salah satu fungsi.
-</pre>
-Setelah mencapai basis kasus, nilai-nilai akan dikalikan secara berurutan mengikuti alur rekursi tidak langsung.
+Program diatas merupakan program yang menghitung nilai faktorial dari sebuah inputan bilangan bulat positif menggunakan Rekursif Tidak Langsung (Indirect Recursion). Kode ini menggunakan fungsi hitungFactorial yang menerima inputan angka dan menghitung faktorialnya secara rekursif. Fungsi ini memanggil dirinya sendiri dengan mengurangi nilai input sebanyak satu setiap kali hingga mencapai angka 1.
 
 
 ### 3. Implementasikan hash table untuk menyimpan data mahasiswa. Setiap mahasiswa memiliki NIM dan nilai. Implementasikan fungsi untuk menambahkan data baru, menghapus data, mencari data berdasarkan NIM, dan mencari data berdasarkan nilai. Dengan ketentuan : a. Setiap mahasiswa memiliki NIM dan nilai. b. Program memiliki tampilan pilihan menu berisi poin C. c. Implementasikan fungsi untuk menambahkan data baru, menghapus data, mencari data berdasarkan NIM, dan mencari data berdasarkan rentang nilai (80 – 90).
@@ -516,23 +445,20 @@ int main() {
 ![Screenshot (1090)](https://github.com/hinaila/Praktikum-Struktur-Data-Assignment/assets/161398108/0e5d15be-2aa6-42e6-8b9a-d839c67574c3)
 
 ### Penjelasan
-Program diatas merupakan program implementasi hash table untuk menyimpan data mahasiswa. Setiap mahasiswa memiliki NIM dan nilai. Implementasikan fungsi untuk menambahkan data baru, menghapus data, mencari data berdasarkan NIM, dan mencari data berdasarkan nilai.
-
-Pertama, program mendefinisikan sebuah struct 'Mahasiswa' yang berisi atribut nim, nama, dan nilai. Kelas utama adalah 'HashMap' yang memiliki array vektor table dengan ukuran tetap TABLE_SIZE (dalam kasus ini, 11). Setiap elemen pada array ini adalah vektor yang menyimpan pointer ke objek 'Mahasiswa'. Fungsi 'hashFunc' digunakan untuk menghitung nilai hash dari sebuah NIM dengan menjumlahkan nilai ASCII setiap karakternya dan mengambil sisa pembagian dengan TABLE_SIZE. Nilai hash ini digunakan sebagai indeks untuk menyimpan atau mencari data mahasiswa pada array table. Fungsi 'tambahData' digunakan untuk menambahkan data mahasiswa baru ke dalam hash map. Fungsi ini akan menghitung nilai hash dari NIM yang diberikan dan menempatkan objek Mahasiswa baru pada vektor di indeks yang sesuai. Fungsi 'hapusData' digunakan untuk menghapus data mahasiswa berdasarkan NIM. Fungsi ini akan mencari objek Mahasiswa dengan NIM yang sesuai pada vektor di indeks yang sesuai, menghapusnya, dan membersihkan memori yang digunakan. Fungsi 'cariByNIM' digunakan untuk mencari data mahasiswa berdasarkan NIM yang diberikan. Fungsi ini akan menghitung nilai hash dari NIM, lalu memeriksa setiap objek Mahasiswa pada vektor di indeks yang sesuai. Jika ditemukan, data mahasiswa akan dicetak. Fungsi 'cariByRange' digunakan untuk mencari data mahasiswa berdasarkan rentang nilai yang diberikan. Fungsi ini akan memeriksa setiap objek Mahasiswa pada semua vektor di semua indeks. Jika nilai mahasiswa berada dalam rentang yang diberikan, data mahasiswa akan dicetak.
-
-Terkahir, membuat fungsi utama 'main', program menampilkan menu dan meminta pengguna untuk memilih operasi yang ingin dilakukan. Pengguna dapat menambah data, menghapus data, mencari data berdasarkan NIM, atau mencari data berdasarkan rentang nilai. Setelah selesai menggunakan program, destruktor ~HashMap akan dipanggil secara otomatis untuk membersihkan memori yang digunakan oleh objek-objek Mahasiswa.
+Program diatas merupakan program implementasi hash table untuk menyimpan data mahasiswa. Setiap mahasiswa memiliki NIM dan nilai. Fungsi insert, remove, dan searchByNilai digunakan untuk menambahkan data baru mahasiswa, menghapus data mahasiswa, mencari data berdasarkan NIM, dan mencari data berdasarkan nilai.
 
 
 ## Kesimpulan
-Rekursif adalah sebuah konsep dalam pemrograman di mana sebuah fungsi dapat memanggil dirinya sendiri secara langsung (rekursif langsung) atau melalui fungsi lain (rekursif tidak langsung). Rekursif digunakan untuk menyelesaikan masalah dengan cara memecahnya menjadi bagian-bagian yang lebih kecil dan sederhana. Sedangkan, Hash table adalah struktur data yang digunakan untuk menyimpan data dengan cara yang efisien dan memungkinkan pencarian, penyisipan, penghapusan, dan pembaruan data dengan cepat. Hash table menggunakan fungsi hash untuk memetakan kunci (key) ke lokasi penyimpanan (bucket) dalam tabel. Operasi utama pada hash table meliputi:
-<pre>
-Insertion: Memasukkan data baru ke dalam hash table.
-Deletion: Menghapus data dari hash table.
-Searching: Mencari data dalam hash table berdasarkan kunci.
-Update: Memperbarui data yang ada dalam hash table.
-Traversal: Menelusuri seluruh data dalam hash table.
-</pre>
-Baik rekursif maupun hash table adalah konsep penting dalam pemrograman yang digunakan untuk menyelesaikan masalah secara efisien dan efektif. Rekursif berguna untuk memecah masalah menjadi bagian-bagian yang lebih sederhana, sementara hash table memungkinkan penyimpanan dan pengaksesan data dengan cepat.
+Fungsi rekursif adalah fungsi yang mengacu pada dirinya sendiri dengan proses pengulangan item-item dengan cara yang mirip.
+
+Jenis-jenis rekursif :
+1. Rekursif langsung adalah jenis rekursi di mana suatu fungsi memanggil dirinya sendiri secara langsung dalam blok kodenya sendiri.
+2. Rekursif tidak langsung adalah suatu fungsi memanggil fungsi lain yang kemudian memanggil kembali fungsi pertama. Rekursif berakhir ketika kasus dasar terpenuhi, dan pada saat itulah proses berhenti.
+
+Hash Table adalah struktur data yang mengorganisir data ke dalam pasangan kunci-nilai Hash table adalah sebuah cara menyimpan suatu data pada memori ke dalam baris-baris dan kolom-kolom sehingga membentuk tabel yang dapat diakses dengan cepat.
+
+Rekursif dan Hash Table adalah konsep penting dalam pemrograman yang digunakan untuk menyelesaikan masalah secara efisien dan efektif. Rekursif berguna untuk memecah masalah menjadi bagian-bagian yang lebih sederhana, rekursif merupakan salah satu proses pengulangan fungsi yang memanggil dirinya sendiri dan pemanggilannya dapat terjadi berulang kali. Sementara hash table memungkinkan penyimpanan dan pengaksesan data dengan cepat. Hash table biasanya terdiri dari dua komponen utama yaitu array (atau vektor) dan fungsi hash.
+
 
 ## Referensi
 S. Herlambang, 2008, Implementasi Fungsi Rekursif Dalam Algoritma dan Perbandingannya dengan Fungsi Iteratif.
