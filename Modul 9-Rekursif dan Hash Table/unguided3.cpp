@@ -1,6 +1,3 @@
-//Vania Noverina
-//2311110031
-
 #include <iostream>
 #include <string>
 #include <vector>
